@@ -2,51 +2,49 @@
 <html>
 
 <head>
-        <!-- BOOTSTRAP -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-
-        <!-- Your custom CSS -->
-        <link rel='stylesheet' type='text/css' href='style.css'>
-
-	<title>ScareBytes</title>
+  <!-- BOOTSTRAP -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <!-- Your custom CSS -->
+  <link rel='stylesheet' type='text/css' href='style.css'>
+  <!-- FIREBASE -->
+  <script src='https://www.gstatic.com/firebasejs/3.1.0/firebase.js'></script>
+  <!-- JQUERY -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <!-- BOOTSTRAP JS -->
+  <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/js/bootstrap-modal.min.js"></script>
+  <!-- JS -->
+  <script src="app.js"></script>
+  <!-- FONTAWESOME -->
+  <script src="https://use.fontawesome.com/1e4f12dbf0.js"></script>
+	
+  <title>ScareBytes</title>
 </head>
 
-	<body>
+<body>
 
 <h1> ScareBytes </h1>
 <img id="logo" src="logo.png">
 
-
-
-<h1>Countdown Clock</h1>
-<div id="clockdiv">
-  <div>
-    <span class="minutes"></span>
-    <div class="smalltext">Minutes</div>
-  </div>
-  <div>
-    <span class="seconds"></span>
-    <div class="smalltext">Seconds</div>
+<div class="container">
+  <div class="row timer">
+    <form id="frm">
+      <input class="marginadder" type="text" id="seconds" name="seconds" size="8" maxlength="8" placeholder="Seconds"/>
+      <br/>
+      <input type="button" id="btnct" value="Input" />
+      <input type="button" value="Start" onclick="countdown()">
+      <input type="button" value="Stop" onclick="cdpause()">
+      <input type="button" value="Reset" onclick="cdreset()">
+    </form>
+    <span class="marginadder" id="timespan"></span>
+    
+    </div>
   </div>
 </div>
+  
 
+</body>
 
-<button onclick="myFunction()">Try it</button>
-
-
-<!-- FIREBASE -->
-<script src='https://www.gstatic.com/firebasejs/3.1.0/firebase.js'></script>
-
-<!-- JQUERY -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-
-<!-- BOOTSTRAP JS (for modal an other functions!) -->
-<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/js/bootstrap-modal.min.js"></script>
-
-<!-- Your main JS Script -->
-<script src="app.js"></script>
-
-	</body>
+  
 </html>
 
 

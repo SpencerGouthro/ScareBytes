@@ -1,57 +1,37 @@
-$(document).ready(function() {
-
-
-
-function getTimeRemaining(endtime) {
-  var t = Date.parse(endtime) - Date.parse(new Date());
-  var seconds = Math.floor((t / 1000) % 60);
-  var minutes = Math.floor((t / 1000 / 60) % 60);
-  return {
-    'total': t,
-    'minutes': minutes,
-    'seconds': seconds
-  };
-}
-
-function initializeClock(id, endtime) {
-  var clock = document.getElementById(id);
-  var minutesSpan = clock.querySelector('.minutes');
-  var secondsSpan = clock.querySelector('.seconds');
-
-  function updateClock() {
-    var t = getTimeRemaining(endtime);
-
-    minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
-    secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
-
-    if (t.total <= 0) {
-      clearInterval(timeinterval);
-
-    }
-  }
-
-  updateClock();
-  var timeinterval = setInterval(updateClock, 1000);
-};
-
-var deadline = new Date(Date.parse(new Date()) + 15 * 24 * 60 * 60 * 1000);
-initializeClock('clockdiv', deadline); 
-
+var CCOUNT;
+$(document).ready(function () {
+    $('#btnct').click(function () {
+        CCOUNT = $('#seconds').val();
+        cdreset();
+    });
 });
+var t, count;
 
-var myVar;
-
-function myFunction() {
-    myVar = setInterval(alertFunc, 1000);
+function cddisplay() {
+    document.getElementById('timespan').innerHTML = count+" second(s)";
 }
 
-function alertFunc() {
-    var audio = new Audio('spookysound.mp3');
-    audio.play();
-    console.log("sound")
-
+function countdown() {
+    // starts countdown
+    cddisplay();
+    if (count === 0) {
+        // time is up
+        var audio = new Audio('spookysound.mp3');
+        audio.play();
+    } else {
+        count--;
+        t = setTimeout(countdown, 1000);
+    }
 }
 
+function cdpause() {
+    // pauses countdown
+    clearTimeout(t);
+}
 
-
-
+function cdreset() {
+    // resets countdown
+    cdpause();
+    count = CCOUNT;
+    cddisplay();
+}
